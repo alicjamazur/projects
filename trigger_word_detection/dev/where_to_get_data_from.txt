@@ -1,0 +1,2 @@
+X_val.npy found here: 
+https://gitlab-cw9.centralesupelec.fr/codingweeksstaff/cs_codingweek_audio/blob/master/trigger_word_detection/XY_val/X_val.npy
