@@ -1,0 +1,8 @@
+Follow instructions on https://github.com/allanzelener/YAD2K
+
+Enviroment that worked for me:
+python==3.6
+h5py==2.7
+pillow==4.1
+tensorflow=-1.14
+keras==2.0
