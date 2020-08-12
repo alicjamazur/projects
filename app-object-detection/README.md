@@ -9,7 +9,7 @@ AWS CLI set up (learn more <a href='https://docs.aws.amazon.com/cli/latest/userg
 
 <h2>Launch the stack with CloudFormation</h2> 
 on the AWS console:
-<img src="cloudformation-launch-stack.png" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=object-detection-app&templateURL=https://raw.githubusercontent.com/molly-moon/app-object-detection/master/object-detection-app-stack.yml"/>
+<img src="./cloudformation-launch-stack.png" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=object-detection-app&templateURL=https://raw.githubusercontent.com/molly-moon/app-object-detection/master/object-detection-app-stack.yml"/>
 
 or via AWS CLI:
 download CloudFormation template:
