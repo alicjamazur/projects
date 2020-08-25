@@ -61,4 +61,3 @@ Stack creation time is about 30 min.
 	````
 	aws cloudformation delete-stack --stack-name object-detection-app
 	````
-
