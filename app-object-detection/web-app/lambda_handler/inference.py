@@ -13,7 +13,7 @@ from keras import backend as K
 from keras.models import load_model
 
 
-#MODEL_DATA_PATH = os.environ['MODEL_DATA']
+MODEL_DATA_PATH = os.environ['MODEL_DATA']
 
 def predict(sess, input_image, yolo_outputs, model, class_names):
     # Preprocess input images to match model input size 
