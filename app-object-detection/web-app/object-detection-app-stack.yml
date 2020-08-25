@@ -437,7 +437,7 @@ Resources:
               wget -P /mnt/efs/fs1/ml/model_data https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/model/coco_classes.txt
               wget -P /mnt/efs/fs1/ml/model_data https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/model/FiraMono-Medium.otf
               wget -P /mnt/efs/fs1/ml/model_data https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/model/yolo_anchors.txt
-              python3 -m pip install -t /mnt/efs/fs1/ml/lib keras==2.0 imageio
+              python3 -m pip install -t /mnt/efs/fs1/ml/lib pillow keras==2.0 imageio
               
               # Send signal to CloudFormation
               /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}

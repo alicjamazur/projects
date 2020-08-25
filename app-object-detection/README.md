@@ -13,8 +13,6 @@ The app is a single page webiste that accepts an input image for back-end server
 
 The front-end was built on top on [Create React App](https://github.com/facebook/create-react-app) open-source project. Both the website and API are hosted on AWS. 
 
-![<img src="./architecture.png" height=281 />)
-
 The workflow starts with a user request that is handled by AWS Amplify powered by API Gateway. API Gateway is integrated with Lambda function that predicts coordinates of bounding boxes and corresponding labels. Due to considerable volume of machine learning libraries, model weights and dependencies, they are stored in Amazon Elastic File System associated with the function.
 
 To make predictions Lambda uses deep learning YOLOv2 model. The inference code is my assignment during [the Deep Learning Specialization course](https://www.coursera.org/specializations/deep-learning?utm_source=gg&utm_medium=sem&utm_content=17-DeepLearning-LATAM&campaignid=6516520287&adgroupid=77982690923&device=c&keyword=coursera%20artificial%20intelligence&matchtype=b&network=g&devicemodel=&adpostion=&creativeid=383382632097&hide_mobile_promo&gclid=Cj0KCQjw7ZL6BRCmARIsAH6XFDLvpcCIClw5qxJ8XfolByUM5qkxPaj-3t5GQy92JGu16Hi9_aQgQ6waAjMpEALw_wcB).
@@ -26,21 +24,25 @@ In order to launch the app you need to create resources with Amazon Web Services
 
 # Launch stack 
 
-+ Launch via AWS console: \
-[<img src='./cloudformation-launch-stack.png'>]("https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=object-detection-app&templateURL=https://raw.githubusercontent.com/molly-moon/app-object-detection/master/object-detection-app-stack.yml)
-+ or via AWS CLI: 
-	- download CloudFormation template to YOUR_PATH
-		```
-		curl -O https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/object-detection-app-stack.yml
-		```
-	- create the stack
-		```
-		aws cloudformation create-stack --stack-name object-detection-app --template-body file://YOUR_PATH/object-detection-app-stack.yml
-		```
+Click on the button to launch the stach via AWS console. 
+
+[<img src='./cloudformation-launch-stack.png'>]("https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=object-detection-app&templateURL=https://raw.githubusercontent.com/molly-moon/app-object-detection/master/object-detection-app-stack.yml) 
+
+Or launch the stack using AWS CLI: 
+- download CloudFormation template to YOUR_PATH
+```
+curl -O https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/object-detection-app-stack.yml
+```
+- create the stack
+```
+aws cloudformation create-stack --stack-name object-detection-app --template-body file://YOUR_PATH/object-detection-app-stack.yml
+```
 
 Stack creation time is about 30 min.
 
 # Under the hood: what resources are being provisioned
+
+<img src="./architecture.png" height=400 />
 
 - Basic environment: VPC, public subnet, private subnet, Internet Gateway, NAT Gateway and all necessary attachments and associations
 - S3 bucket for website hosting and for Lambda handler code storage
@@ -58,6 +60,6 @@ Stack creation time is about 30 min.
 # Clean up
 - From the console: select the stack to be deleted and then click **Delete** button 
 - Using AWS CLI: run the command
-	````
-	aws cloudformation delete-stack --stack-name object-detection-app
-	````
+````
+aws cloudformation delete-stack --stack-name object-detection-app
+````
