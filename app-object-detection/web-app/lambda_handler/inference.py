@@ -222,7 +222,6 @@ def handler(event, context):
     # Make inference
     sess = K.get_session()
     model = load_model(MODEL_DATA_PATH + '/yolov2.h5')
-    model = load_model(weights)
     features = model.output
     anchors = read_anchors(MODEL_DATA_PATH + '/yolo_anchors.txt')
     class_names = read_classes(MODEL_DATA_PATH + '/coco_classes.txt')
