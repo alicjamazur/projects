@@ -364,26 +364,27 @@ Resources:
 # Configure EFS 
 
   OpenSSH:
-  Type: AWS::EC2::SecurityGroup
-  Properties:
-      GroupDescription: Allow http to client host
-      VpcId:
-         Ref: VPC
-      SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 0.0.0.0/0
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+        GroupDescription: Allow http to client host
+        VpcId:
+          Ref: VPC
+        SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
 
   EC2Instance: 
     DependsOn: 
       - MountTargetPublic
       - AccessPointResource
+      - FileSystemResource
       - HostingBucket
     Type: AWS::EC2::Instance
     Properties:
@@ -401,50 +402,50 @@ Resources:
       IamInstanceProfile: !Ref InstanceProfile
       InstanceInitiatedShutdownBehavior: terminate
       UserData: 
-        Fn::Base64: !Sub
-          - |
-            #!/bin/bash
-            yum update -y
-            /opt/aws/bin/cfn-init
-            yum install -y aws-cfn-bootstrap
-            # Download Lambda handler
-            curl -L -o master.zip https://github.com/molly-moon/app-object-detection/zipball/master
-            unzip master.zip
-            aws s3 cp molly-moon-app-object-detection*/handler.zip s3://${HostingBucket}
-            # Mount EFS 
-            yum install -y amazon-efs-utils
-            apt-get -y install amazon-efs-utils
-            yum install -y nfs-utils
-            apt-get -y install nfs-common
-            file_system_id_1="${FileSystemResource}"
-            efs_mount_point_1=/mnt/efs/fs1
-            mkdir -p "$efs_mount_point_1"
-            test -f "/sbin/mount.efs" && printf "\n$file_system_id_1:/ $efs_mount_point_1 efs tls,_netdev\n" >> /etc/fstab || printf "\n$file_system_id_1.efs.us-east-1.amazonaws.com:/ $efs_mount_point_1 nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0\n" >> /etc/fstab
-            test -f "/sbin/mount.efs" && printf "\n[client-info]\nsource=liw\n" >> /etc/amazon/efs/efs-utils.conf
-            mount -a -t efs,nfs4 defaults
-            # Install Python3.6  
-            sudo yum -y groupinstall development
-            sudo yum -y install zlib-devel
-            sudo yum -y install openssl-devel bzip2-devel
-            curl -O https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
-            tar xzvf Python-3.6.8.tgz
-            cd Python-3.6.8
-            sudo ./configure --enable-optimizations
-            sudo make install
-            # Download model weights
-            sudo mkdir /mnt/efs/fs1/ml
-            sudo chown ec2-user:ec2-user /mnt/efs/fs1/ml
-            wget -P /mnt/efs/fs1/ml/model_data https://tutorial-upload.s3.amazonaws.com/yolov2.h5
-            # Install lambda dependencies
-            python3 -m pip install -t /mnt/efs/fs1/ml/lib keras==2.0 imageio
-            sudo chown -R 1001:1001 /mnt/efs/fs1/ml
-            # Send a signal to CloudFormation
-            /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
-            # Terminate instance
-            sudo shutdown -h now
+        Fn::Base64: 
+          !Sub 
+            - |
+              #!/bin/bash
+              sudo yum update -y
 
-          - efs_mount_point_1: "/mnt/efs/fs1"
-            file_system_id_1: ${FileSystemResource} 
+              # Download Lambda handler
+              wget https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/lambda_handler/inference.py
+              zip inference.zip inference.py
+              aws s3 cp inference.zip s3://${HostingBucket}
+
+              # Mount file system
+              sudo mkdir -p /mnt/efs/fs1
+              sudo chown ec2-user:ec2-user /mnt/efs/fs1
+              sudo yum install -y amazon-efs-utils
+              sleep 120
+              sudo mount -t efs -o tls ${FileSystemId}:/ /mnt/efs/fs1
+
+              # Install Python 3.6  
+              sudo yum -y groupinstall development
+              sudo yum -y install zlib-devel
+              sudo yum -y install openssl-devel bzip2-devel
+              sudo curl -O https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
+              sudo tar xzvf Python-3.6.8.tgz
+              cd Python-3.6.8
+              sudo ./configure --enable-optimizations
+              sudo make install
+              
+              # Download and install Lambda dependencies
+              sudo mkdir /mnt/efs/fs1/ml
+              sudo chown ec2-user:ec2-user /mnt/efs/fs1/ml
+              wget -P /mnt/efs/fs1/ml/model_data https://tutorial-upload.s3.amazonaws.com/yolov2.h5
+              wget -P /mnt/efs/fs1/ml/model_data https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/model/coco_classes.txt
+              wget -P /mnt/efs/fs1/ml/model_data https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/model/FiraMono-Medium.otf
+              wget -P /mnt/efs/fs1/ml/model_data https://raw.githubusercontent.com/molly-moon/projects/master/app-object-detection/web-app/model/yolo_anchors.txt
+              python3 -m pip install -t /mnt/efs/fs1/ml/lib keras==2.0 imageio
+              
+              # Send signal to CloudFormation
+              /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
+
+              # Terminate instance
+              sudo shutdown -h now
+
+            - FileSystemId: !Ref FileSystemResource
     CreationPolicy:
       ResourceSignal:
         Count: 1
@@ -516,11 +517,11 @@ Resources:
     Properties: 
       FunctionName: !Ref AWS::StackName
       Runtime: python3.6
-      Handler: handler.handler
+      Handler: inference.handler
       Role: !GetAtt RoleLambda.Arn
       Code: 
         S3Bucket: !Ref HostingBucket
-        S3Key: handler.zip
+        S3Key: inference.zip
       Timeout: 300
       MemorySize: 3008
       Environment:
@@ -532,6 +533,7 @@ Resources:
           - !GetAtt VPC.DefaultSecurityGroup
         SubnetIds: 
           - !Ref PrivateSubnet
+          - !Ref PublicSubnet
       FileSystemConfigs:
         - Arn: !GetAtt AccessPointResource.Arn
           LocalMountPath: /mnt/inference
