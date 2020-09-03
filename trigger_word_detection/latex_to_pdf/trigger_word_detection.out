@@ -1,9 +1,0 @@
-\BOOKMARK [1][-]{section.1}{Trigger word detection}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Data preparation}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Data synthesis}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Synthesized data transformation \(Fourier transform\)}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.4}{Training set preparation}{section.1}% 5
-\BOOKMARK [2][-]{subsection.1.5}{Model architecture}{section.1}% 6
-\BOOKMARK [2][-]{subsection.1.6}{Training}{section.1}% 7
-\BOOKMARK [2][-]{subsection.1.7}{Validation}{section.1}% 8
-\BOOKMARK [2][-]{subsection.1.8}{Testing}{section.1}% 9
