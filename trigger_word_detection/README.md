@@ -5,5 +5,4 @@ The model detects trigger word "activate" in input audio files. It triggers a ch
 
 <img src="https://github.com/molly-moon/projects/raw/master/images/trigger-word-detection.png" height=300/>
 
-
 See the [Jupyter Notebook](https://github.com/molly-moon/projects/blob/master/trigger_word_detection/trigger_word_detection.ipynb) for more details. 
