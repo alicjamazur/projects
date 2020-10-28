@@ -1,19 +1,23 @@
 ## Demo apps and projects
 This repository containes demo applications and projects I created while getting to know data science and cloud computing concepts. 
 
-<br>
++ [Pneumonia Detection from Chest X-Ray Images](https://github.com/molly-moon/pneumonia-detection)
 
-+ [Object Detection Application](https://github.com/molly-moon/projects/tree/master/object_detection)
+  The fine-tuned Convolutional Neural Network (CNN) that detects pneumonia on x-ray images. The project contains a visualization of representations learned by the network using activation maps technique. Also, it features a visual explanation of the classifier results with Grad-CAM (Gradient-weighted Class Activation Mapping). Refer to the [Overview](https://github.com/molly-moon/pneumonia-detection#overview-of-data-training-model-results) section for model performance summary.
+
+  <p align=center>
+  <img src="https://github.com/molly-moon/pneumonia-detection/raw/master/grad-cam.png" height=300/>
+  </p>
+
++ [Object Detection Application](https://github.com/molly-moon/app-object-detection)
 
   Serverless application that uses a deep learning model YOLOv2 to detect objects on uploaded images.
 
   The app is a single page website that accepts an input image for back-end serverless processing with AWS Lambda. It responds with the provided input image that has been marked with bouding boxes which represent detected objects. Each bounding box features a label that classifies the detected object.
   <p align=center>
   <img src="https://github.com/molly-moon/projects/raw/master/images/mazio_hambugs.png" height=300/>
+  <img src="https://github.com/molly-moon/app-object-detection/raw/master/images/architecture.png" height=300/>
   </p>
-  
-<br>
-<br>
 
 + [Image Classification Project]()
 	
@@ -23,8 +27,6 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/projects/raw/master/image-classification-resnet/images/hand-gesture.png" height=200/>
   </p>
 
-  <br>
-  <br>
 
 + [Face Verification and Recognition Project]()
 
@@ -42,9 +44,6 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/projects/raw/master/face-verification-recognition/images/face-recognition.png" width=180>
   </p>
 
-  <br>
-  <br>
-
 + [Trigger Word Detection Project]()
 
   The model detects trigger word "activate" in input audio files. It triggers a chiming sound when the probability ultrapasses a certain threshold. The model is a uni-directional Recurrent Neural Network with Gated Recurrent Unit (GRU). It was trained on synthesized audio files from noise, trigger word and non-trigger word sounds. 
@@ -55,8 +54,6 @@ This repository containes demo applications and projects I created while getting
 
   See the [Jupyter Notebook](https://github.com/molly-moon/projects/blob/master/trigger_word_detection/trigger_word_detection.ipynb) for more details. 
 
-  <br>
-  <br>
 + [Scratch, a note taking app]()
 
   Project inspired by the open-source project [Serverless Stack](https://serverless-stack.com/) by Anomaly Innovations. They created a step-by-step guide to help you build a full-stack serverless application hosted on AWS.
