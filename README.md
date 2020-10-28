@@ -52,8 +52,6 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/projects/raw/master/images/trigger-word-detection.png" height=300/>
   </p>
 
-  See the [Jupyter Notebook](https://github.com/molly-moon/projects/blob/master/trigger_word_detection/trigger_word_detection.ipynb) for more details. 
-
 + [Scratch, a note taking app]()
 
   Project inspired by the open-source project [Serverless Stack](https://serverless-stack.com/) by Anomaly Innovations. They created a step-by-step guide to help you build a full-stack serverless application hosted on AWS.
