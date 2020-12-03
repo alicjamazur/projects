@@ -1,6 +1,20 @@
 ## Demo apps and projects
 This repository containes demo applications and projects I created while getting to know data science and cloud computing concepts. 
 
++ [Targeted Marketing Campaign](https://github.com/molly-moon/projects/tree/master/targeted_marketing_campaign)
+  
+  Clustering K-means model used for customer profile discovery for strategic approach during the marketing campaign. Features PCA analysis to visualize detected clusters and find out the most representable features in the dataset. 
+
+  <p align=center>
+  <img src="https://github.com/molly-moon/projects/raw/master/images/marketing-campaign-clustering.png" height=300/>
+  </p>
+
+  ML predictive model that classifies customers as likely to respond to upcoming marketing campaign or not. The model used is an XGBoost classifier tuned by a random search of hyperparameters. Features exploratory data analysis and explanatory analysis of classification model predictions.
+
+  <p align=center>
+  <img src="https://github.com/molly-moon/projects/raw/master/images/marketing-campaign-cfs.png" height=300/>
+  </p>
+
 + [Pneumonia Detection from Chest X-Ray Images](https://github.com/molly-moon/pneumonia-detection)
 
   The fine-tuned Convolutional Neural Network (CNN) that detects pneumonia on x-ray images. The project contains a visualization of representations learned by the network using activation maps technique. Also, it features a visual explanation of the classifier results with Grad-CAM (Gradient-weighted Class Activation Mapping). Refer to the [Overview](https://github.com/molly-moon/pneumonia-detection#overview-of-data-training-model-results) section for model performance summary.
