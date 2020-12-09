@@ -1,19 +1,39 @@
 ## Demo apps and projects
-This repository containes demo applications and projects I created while getting to know data science and cloud computing concepts. 
+This repository containes demo applications and projects I worked on while getting to know data science and cloud computing concepts. 
+
++ [Prediction of Students Performance on Final Exam]()
+  
+  Machine learning pipeline that performs column transformation, feature selection and model training with the objective to classify students as either likely to fail on final exam or not. Several models were considered to compare the performance on the test set. The project features data transformation (multiple table joins), exploratory data analysis, explanatory analysis of XGBoost model predictions and error (false negatives) analysis. 
+
+  <p align=center>
+  <img src="https://github.com/molly-moon/projects/raw/master/images/student-performance.jpg" height=250/>
+  </p>
+
+<p align=center>
+<br>
+* * *
+<br>
+</p>
 
 + [Targeted Marketing Campaign](https://github.com/molly-moon/projects/tree/master/targeted_marketing_campaign)
   
   Clustering K-means model used for customer profile discovery for strategic approach during the marketing campaign. Features PCA analysis to visualize detected clusters and find out the most representable features in the dataset. 
 
   <p align=center>
-  <img src="https://github.com/molly-moon/projects/raw/master/images/marketing-campaign-clustering.png" height=300/>
+  <img src="https://github.com/molly-moon/projects/raw/master/images/marketing-campaign-clustering.png" height=250/>
   </p>
 
-  ML predictive model that classifies customers as likely to respond to upcoming marketing campaign or not. The model used is an XGBoost classifier tuned by a random search of hyperparameters. Features exploratory data analysis and explanatory analysis of classification model predictions.
+  ML predictive model that classifies customers as wheather likely to respond to upcoming marketing campaign or not. The model used is an XGBoost classifier tuned by a random search of hyperparameters. Features exploratory data analysis and explanatory analysis of classification model predictions.
 
   <p align=center>
-  <img src="https://github.com/molly-moon/projects/raw/master/images/marketing-campaign-cfs.png" height=300/>
+  <img src="https://github.com/molly-moon/projects/raw/master/images/marketing-campaign-cfs.png" height=250/>
   </p>
+
+<p align=center>
+<br>
+* * *
+<br>
+</p>
 
 + [Pneumonia Detection from Chest X-Ray Images](https://github.com/molly-moon/pneumonia-detection)
 
@@ -23,7 +43,13 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/pneumonia-detection/raw/master/grad-cam.png" height=300/>
   </p>
 
-+ [Object Detection Application](https://github.com/molly-moon/app-object-detection)
+<p align=center>
+<br>
+* * *
+<br>
+</p>
+
++ [Full-Stack Object Detection Application Hosted in the Cloud](https://github.com/molly-moon/app-object-detection)
 
   Serverless application that uses a deep learning model YOLOv2 to detect objects on uploaded images.
 
@@ -33,7 +59,13 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/app-object-detection/raw/master/images/architecture.png" height=300/>
   </p>
 
-+ [Image Classification Project]()
+<p align=center>
+<br>
+* * *
+<br>
+</p>
+
++ [Recognition of Hand Gestures Captured on Images]()
 	
   The project allows to identify a number shown with hand gesture captured on images. It uses a ResNet deep learning model and leverages pre-trained weights. The model accepts an input image and returns a probability vector with 6 elements, corresponding to numbers 0-5. 
 
@@ -41,8 +73,13 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/projects/raw/master/image-classification-resnet/images/hand-gesture.png" height=200/>
   </p>
 
+<p align=center>
+<br>
+* * *
+<br>
+</p>
 
-+ [Face Verification and Recognition Project]()
++ [Face Verification and Recognition on Images]()
 
   This project implements Inception algorithm for face verification and face recognition. 
 
@@ -58,7 +95,13 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/projects/raw/master/face-verification-recognition/images/face-recognition.png" width=180>
   </p>
 
-+ [Trigger Word Detection Project]()
+<p align=center>
+<br>
+* * *
+<br>
+</p>
+
++ [Speech Recognition on Synthesized Audio Files]()
 
   The model detects trigger word "activate" in input audio files. It triggers a chiming sound when the probability ultrapasses a certain threshold. The model is a uni-directional Recurrent Neural Network with Gated Recurrent Unit (GRU). It was trained on synthesized audio files from noise, trigger word and non-trigger word sounds. 
 
@@ -66,7 +109,13 @@ This repository containes demo applications and projects I created while getting
   <img src="https://github.com/molly-moon/projects/raw/master/images/trigger-word-detection.png" height=300/>
   </p>
 
-+ [Scratch, a note taking app]()
+<p align=center>
+<br>
+* * *
+<br>
+</p>
+
++ [Serverless Note Taking Application]()
 
   Project inspired by the open-source project [Serverless Stack](https://serverless-stack.com/) by Anomaly Innovations. They created a step-by-step guide to help you build a full-stack serverless application hosted on AWS.
   <p align=center>
