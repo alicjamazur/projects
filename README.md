@@ -1,7 +1,7 @@
 ## Demo apps and projects
 This repository containes demo applications and projects I worked on while getting to know data science and cloud computing concepts. 
 
-+ [Prediction of Students Performance on Final Exam]()
++ [Prediction of Students Performance on Final Exam](https://github.com/molly-moon/projects/tree/master/students-performance)
   
   Machine learning pipeline that performs column transformation, feature selection and model training with the objective to classify students as either likely to fail on final exam or not. Several models were considered to compare the performance on the test set. The project features data transformation (multiple table joins), exploratory data analysis, explanatory analysis of XGBoost model predictions and error (false negatives) analysis. 
 
