@@ -1,5 +1,19 @@
 ## Demo apps and projects
-This repository containes demo applications and projects I worked on while getting to know data science and cloud computing concepts. 
+This repository containes demo applications and projects I worked on while getting to know data science and data engineering concepts.
++ [Orchestrated ETL Workflow](https://github.com/alicjamazur/data-engineering-case)
+  
+  The goal of this project is to provide a solution for Business Inteligence team who needs to perform a market study on publicly available data of their competitors. The project features extraction, transformation and load of Amazon Customer Reviews dataset and Netflix Prize dataset with Pyspark to a data warehouse (Amazon Redshift). The execution of the task was demonstrated by using AWS Step Functions coded with AWS CloudFormation.
+
+  <p align=center>
+  <img src="https://github.com/molly-moon/projects/raw/master/images/etl-flow.png" height=250/>
+  </p>
+
+<p align=center>
+<br>
+* * *
+<br>
+</p>
+
 
 + [Prediction of Students Performance on Final Exam](https://github.com/molly-moon/projects/tree/master/students-performance)
   
